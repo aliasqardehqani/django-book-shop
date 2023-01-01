@@ -1,5 +1,5 @@
 from django.test import TestCase, SimpleTestCase
-from django.urls import reverse
+from django.urls import reverse, resolve
 from .views import HomePageView
 
 class HomePageTests(SimpleTestCase):
@@ -20,3 +20,10 @@ class HomePageTests(SimpleTestCase):
         
     def test_homepage_does_not_contain_incorrect_html(self): # new
         self.assertNotContains(self.response, 'Hi there! I should not be on the page.')
+
+    def test_homepage_url_resolves_homepageview(self): # new
+        view = resolve('/')
+        self.assertEqual(
+        view.func.__name__,
+        HomePageView.as_view().__name__
+        )
