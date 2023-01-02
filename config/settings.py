@@ -38,6 +38,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 
+    'crispy_forms', 
+
     # MyApp
     'account',
     'pages',
@@ -130,3 +132,15 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 AUTH_USER_MODEL = 'account.CustomUser' #new
 LOGIN_REDIRECT_URL = 'home'
 LOGOUT_REDIRECT_URL = 'home' # new
+
+
+# STATIC_URL
+STATIC_URL = '/static/'
+STATICFILES_DIRS = (str(BASE_DIR.joinpath('static')),)
+STATIC_ROOT = str(BASE_DIR.joinpath('staticfiles'))
+STATICFILES_FINDERS = [
+  "django.contrib.staticfiles.finders.FileSystemFinder",
+  "django.contrib.staticfiles.finders.AppDirectoriesFinder",
+]
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
