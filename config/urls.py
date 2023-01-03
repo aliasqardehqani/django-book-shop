@@ -18,12 +18,13 @@ from django.urls import path, include
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    
+    path('accounts/', include('allauth.urls')), 
+
     # UserManagment
-    path('account/', include('django.contrib.auth.urls')), #new
+    path('account/', include('django.contrib.auth.urls')),
     
     # LocalApp
-    path('account/', include('account.urls')), # new
+    path('account/', include('accounts.urls')), 
 
-    path('', include('pages.urls')), #new
+    path('', include('pages.urls')),
 ]
